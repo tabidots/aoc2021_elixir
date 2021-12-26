@@ -8,12 +8,12 @@ defmodule Aoc2021.D09 do
 
   def low_points(heatmap) do
     Enum.filter(heatmap, fn {coords, _value} ->
-      Aoc2021.D09.low_point?(coords, heatmap)
+      low_point?(coords, heatmap)
     end)
   end
 
   def part_1(heatmap) do
-    Aoc2021.D09.low_points(heatmap)
+    low_points(heatmap)
     |> Enum.reduce(0, fn {_coords, height}, risk -> risk + height + 1 end)
   end
 
@@ -28,12 +28,12 @@ defmodule Aoc2021.D09 do
     if new_basin == basin do
       basin
     else
-      Aoc2021.D09.get_basin(new_basin, heatmap)
+      get_basin(new_basin, heatmap)
     end
   end
 
   def part_2(heatmap) do
-    Aoc2021.D09.low_points(heatmap)
+    low_points(heatmap)
     |> Enum.map(fn cell -> MapSet.new([cell]) |> get_basin(heatmap) |> Enum.count() end)
     |> Enum.sort(&>=/2)
     |> Enum.take(3)

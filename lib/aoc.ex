@@ -6,7 +6,7 @@ defmodule AOC do
   """
   def parse_lines(path) do
     File.stream!("../aoc2021/resources/" <> path)
-    |> Enum.map(fn line -> String.trim_trailing(line) |> String.to_integer() end)
+    |> Stream.map(fn line -> String.trim_trailing(line) |> String.to_integer() end)
   end
 
   @doc """
@@ -14,7 +14,7 @@ defmodule AOC do
   """
   def parse_lines(path, func) do
     File.stream!("../aoc2021/resources/" <> path)
-    |> Enum.map(fn line -> String.trim_trailing(line) |> func.() end)
+    |> Stream.map(fn line -> String.trim_trailing(line) |> func.() end)
   end
 
   @doc """

@@ -31,23 +31,23 @@ defmodule Aoc2021.D05 do
   end
 
   def find_overlaps(input, opts \\ []) do
-    Enum.flat_map(input, fn coords -> to_points(coords, opts) end)
+    Stream.flat_map(input, fn coords -> to_points(coords, opts) end)
     |> Enum.frequencies()
     |> Enum.count(fn {_coord, freq} -> freq > 1 end)
   end
 
   def solutions do
-    sample_input = AOC.parse_lines("day05_ex.txt", &Aoc2021.D05.parse_endpoints/1)
-    puzzle_input = AOC.parse_lines("day05.txt", &Aoc2021.D05.parse_endpoints/1)
+    sample_input = AOC.parse_lines("day05_ex.txt", &parse_endpoints/1)
+    puzzle_input = AOC.parse_lines("day05.txt", &parse_endpoints/1)
 
     %{
       part_1: [
-        sample: Aoc2021.D05.find_overlaps(sample_input),
-        puzzle: Aoc2021.D05.find_overlaps(puzzle_input)
+        sample: find_overlaps(sample_input),
+        puzzle: find_overlaps(puzzle_input)
       ],
       part_2: [
-        sample: Aoc2021.D05.find_overlaps(sample_input, diagonal: true),
-        puzzle: Aoc2021.D05.find_overlaps(puzzle_input, diagonal: true)
+        sample: find_overlaps(sample_input, diagonal: true),
+        puzzle: find_overlaps(puzzle_input, diagonal: true)
       ]
     }
   end
