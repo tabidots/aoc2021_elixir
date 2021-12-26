@@ -1,0 +1,10 @@
+{application,aoc2021,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"aoc2021"},
+              {modules,['Elixir.AOC','Elixir.Aoc2021',
+                        'Elixir.Aoc2021.Application','Elixir.Aoc2021.D01',
+                        'Elixir.Aoc2021.D02','Elixir.Aoc2021.D05',
+                        'Elixir.Aoc2021.D07','Elixir.Aoc2021.D09']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {mod,{'Elixir.Aoc2021.Application',[]}}]}.
